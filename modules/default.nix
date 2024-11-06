@@ -122,7 +122,10 @@
     networkmanagerapplet
     appimage-run
     sddm-astronaut
-  ];
+    pinta
+    wineWowPackages.waylandFull
+    winetricks
+    ];
 
   # ================================================================ #
   # =                         INFASTRUCTURE                        = #

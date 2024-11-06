@@ -5,7 +5,7 @@
     "modules-left": [
         "hyprland/mode",
         "hyprland/scratchpad",
-	"custom/waybar-media"
+	    "custom/waybar-media"
     ],
     "modules-center": [
         "hyprland/workspaces"

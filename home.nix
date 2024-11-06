@@ -2,10 +2,11 @@
 {
   imports = [
     ./configs/fastfetch/default.nix
+    ./configs/waybar.nix
   ];
 
   # symlinking
-  home.file."/.config/niri/config.kdl".source = ./configs/niri/niri.kdl;
+  home.file."/.config/niri/config.kdl".source = ./configs/niri.kdl;
 
   home = {
     username = "goat";
@@ -47,7 +48,6 @@
 
   programs = {
     fuzzel.enable = true;
-    waybar.enable = true;
     neovim.enable = true;
     git = {
       enable = true;
