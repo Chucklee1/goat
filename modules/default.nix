@@ -152,13 +152,6 @@
   # opengl option, renamed to graphics as of 24.11
   hardware.graphics.enable = true;
 
-  # display manager
-  services.xserver.displayManager.sddm = {
-    wayland.enable = true;
-    theme = "sddm-astronaut-theme";
-    package = pkgs.sddm-astronaut;
-  };
-
   # sound
   hardware.pulseaudio.enable = false;
   services.pipewire = {
@@ -178,7 +171,14 @@
 
   # keyboard
   services = {
-    xserver.enable = false;
+    xserver = {
+      enable = false;
+      displayManager.sddm = {
+        wayland.enable = true;
+        theme = "sddm-astronaut-theme";
+        package = pkgs.sddm-astronaut; 
+      }; 
+    };
     libinput.enable = true;
   };
 

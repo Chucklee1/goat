@@ -1,8 +1,5 @@
+{ pkgs, lib, ... }: 
 {
-  pkgs,
-  lib,
-  ...
-}: {
   imports = [
     ./configs/fastfetch/default.nix
   ];

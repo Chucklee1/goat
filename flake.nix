@@ -9,14 +9,7 @@
     niri.url = "github:YaLTeR/niri";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    stylix,
-    niri,
-    ...
-  } @ inputs: {
+  outputs = { self, nixpkgs, home-manager, stylix, niri, ... } @ inputs: {
     # niri extended packahe
     overlays = [niri.overlays.niri];
     # laptop config
