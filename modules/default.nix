@@ -121,6 +121,7 @@
     # misc
     networkmanagerapplet
     appimage-run
+    sddm-astronaut
   ];
 
   # ================================================================ #
@@ -186,14 +187,15 @@
     xserver = {
       enable = true;
       xkb.layout = "us";
-      displayManager= {
-        lightdm.enable = false;
-        sddm.wayland.enable = true;
-        sddm.theme = "sddm-astronaut-theme";
-        sddm.package = pkgs.sddm-astronaut; 
+      displayManager.lightdm.enable = false;
       }; 
-    };
     libinput.enable = true;
+    displayManager = {
+      sddm = {
+        wayland.enable = true;
+        theme = "sddm-astronaut-theme";
+      };
+    }; 
   };
 
   # misc services
