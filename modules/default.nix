@@ -9,6 +9,10 @@
     ./GPU/nvidia.nix
     ./GPU/radeon.nix
   ];
+  # ================================================================ #
+  # =                           SYSTEM                             = #
+  # ================================================================ #
+  
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -49,6 +53,10 @@
     description = "goat";
     extraGroups = ["networkmanager" "wheel"];
   };
+
+  # ================================================================ #
+  # =                            SOFTWARE                          = #
+  # ================================================================ #
 
   # file manager
   programs = {
@@ -115,6 +123,10 @@
     appimage-run
   ];
 
+  # ================================================================ #
+  # =                         INFASTRUCTURE                        = #
+  # ================================================================ #
+
   # theming
   stylix = {
     enable = true;
@@ -172,11 +184,13 @@
   # keyboard
   services = {
     xserver = {
-      enable = false;
-      displayManager.sddm = {
-        wayland.enable = true;
-        theme = "sddm-astronaut-theme";
-        package = pkgs.sddm-astronaut; 
+      enable = true;
+      xkb.layout = "us";
+      displayManager= {
+        lightdm.enable = false;
+        sddm.wayland.enable = true;
+        sddm.theme = "sddm-astronaut-theme";
+        sddm.package = pkgs.sddm-astronaut; 
       }; 
     };
     libinput.enable = true;
