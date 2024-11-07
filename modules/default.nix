@@ -83,7 +83,6 @@
     qt6.qtwayland
     networkmanagerapplet
     swww
-    waybar
     # clipboard
     wl-clipboard
     cliphist
