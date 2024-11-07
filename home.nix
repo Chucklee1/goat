@@ -4,6 +4,7 @@
   nixvim,
   ...
 }: {
+  imports = [./configs/waybar.nix];
   home = {
     # general statements
     username = "goat";
