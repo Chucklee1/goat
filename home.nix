@@ -5,9 +5,20 @@
     homeDirectory = "/home/goat";
     stateVersion = "24.05"; # D O  N O T  C H A N G E
     # symlinking
-    file."../../.config/niri/config.kdl".source = ../configs/niri.kdl;
-    file."../../.config/waybar/config.jsonc".source = ../configs/waybar/config.jsonc;
-    file." ../../.config/waybar/style.css ".source = ../configs/waybar/style.css;
+    file.".config/niri/config.kdl".source = ./configs/niri.kdl;
+    file.".config/waybar/config.jsonc".source = ./configs/waybar/config.jsonc;
+    file.".config/waybar/style.css ".source = ./configs/waybar/style.css;
+    # packages
+    packages = with pkgs; [
+      firefox
+      vscode-fhs
+      papirus-icon-theme
+      wineWowPackages.waylandFull
+    ];
+
+    # user theming
+    gtk.iconTheme.name = "Papirus-Dark";
+
     # user-level variables
     sessionVariables = {
       EDITOR = "neovim";
@@ -25,11 +36,14 @@
 
   # smaller dotfiles
   programs = {
+    fuzzel.enable = true;
     git = {
+      enable = true;
       userEmail = "cooperkang4@gamil.com";
       userName = "Chucklee1";
     };
     kitty = {
+      enable = true;
       settings = {
         scrollback_lines = 2000;
         wheel_scroll_min_lines = 1;

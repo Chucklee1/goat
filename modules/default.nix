@@ -82,10 +82,8 @@
     qt5.qtwayland
     qt6.qtwayland
     networkmanagerapplet
-    kitty
     swww
     waybar
-    fuzzel
     # clipboard
     wl-clipboard
     cliphist
@@ -108,11 +106,6 @@
     pavucontrol
     brightnessctl
     # misc
-    wineWowPackages.waylandFull
-    winetricks
-    vscode-fhs
-    firefox
-    papirus-icon-theme
     libgccjit
     rustc
   ];
