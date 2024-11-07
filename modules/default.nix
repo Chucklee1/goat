@@ -96,6 +96,7 @@
     # wayland
     wayland-utils
     wayland-scanner
+    kdePackages.kwin # compositor for sddm
     egl-wayland
     qt5.qtwayland
     qt6.qtwayland
@@ -177,54 +178,48 @@
 
   fonts.packages = [(pkgs.nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})];
 
-  # opengl option, renamed to graphics as of 24.11
-  hardware.graphics.enable = true;
-
-  # sound
-  hardware.pulseaudio.enable = false;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
+  # hardware
+  hardware = {
+    # opengl option, renamed to graphics as of 24.11
+    graphics.enable = true;
+    # bluetooth
+    bluetooth.enable = true;
+    bluetooth.powerOnBoot = true; 
+    # disable pulse audio
+    pulseaudio.enable = false;
   };
 
-  # bluetooth
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-  services.blueman.enable = true;
-
-  # printing
-  services.printing.enable = true;
-
-  # keyboard
+  # services
   services = {
-    xserver = {
+    # keyboard
+    printing.enable = true;
+    # bluetooth applet
+    blueman.enable = true;
+    # sound
+    pipewire = {
       enable = true;
-      xkb.layout = "us";
-      displayManager.lightdm.enable = false;
-      }; 
-    libinput.enable = true;
-  };
-
-  # display-manager
-  services.displayManager = {
-    enable = true;
-    defaultSession = "niri";
-    sddm = {
-      enable = true;
-      wayland.enable = true;
-      autoNumlock = true;
-    }; 
-  };
-
-  # misc services
-  services = {
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+    # misc services
     gvfs.enable = true;
     tumbler.enable = true;
     fstrim.enable = true;
     gnome.gnome-keyring.enable = true;
     openssh.enable = true;
+    libinput.enable = true;
+    # display-manager
+    displayManager = {
+      enable = true;
+      defaultSession = "niri";
+      sddm = {
+        enable = true;
+        wayland.enable = true;
+        wayland.compositor = "kwin";
+        autoNumlock = true;
+      };  
+    };
   };
 
   # security

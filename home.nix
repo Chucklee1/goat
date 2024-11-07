@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }: 
 {
+  pkgs,
+  lib,
+  ...
+}: {
   # symlinking
   home.file."/.config/niri/config.kdl".source = ./configs/niri.kdl;
 
