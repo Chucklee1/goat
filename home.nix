@@ -1,10 +1,5 @@
 { pkgs, lib, ... }: 
 {
-  imports = [
-    ./configs/fastfetch/default.nix
-    ./configs/waybar.nix
-  ];
-
   # symlinking
   home.file."/.config/niri/config.kdl".source = ./configs/niri.kdl;
 
@@ -18,37 +13,19 @@
       NIXOS_OZONE_WL = "1";
       GDK_BACKEND = "wayland";
       QT_QPA_PLATFORM = "wayland";
-      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1"; # disable window decoration for qt apps
+      # QT_WAYLAND_DISABLE_WINDOWDECORATION = "1"; # disable window decoration for qt apps
       SDL_VIDEODRIVER = "wayland";
       MOZ_ENABLE_WAYLAND = "1";
       XDG_SESSION_TYPE = "wayland";
       CLUTTER_BACKEND = "wayland";
-      GTK_CSD = "true";
+      # GTK_CSD = "true";
     };
-
-    # env no config packages
-    packages = with pkgs; [
-      # cli
-      sl
-      cowsay
-      # apps
-      vscode-fhs
-      firefox
-      # theming
-      swww
-      papirus-icon-theme
-      # programing
-      libgccjit
-      rustc
-    ];
   };
 
   # user theming
   gtk.iconTheme.name = "Papirus-Dark";
 
   programs = {
-    fuzzel.enable = true;
-    neovim.enable = true;
     git = {
       enable = true;
       userEmail = "cooperkang4@gamil.com";

@@ -19,18 +19,18 @@
   boot.plymouth.enable = true;
 
   # using tmpfs
-  boot.tmp.useTmpfs = false;
-  boot.tmp.tmpfsSize = "30%";
+  # boot.tmp.useTmpfs = false;
+  # boot.tmp.tmpfsSize = "30%";
 
-  boot.binfmt.registrations.appimage = {
+  # boot.binfmt.registrations.appimage = {
     # appimage support
-    wrapInterpreterInShell = false;
-    interpreter = "${pkgs.appimage-run}/bin/appimage-run";
-    recognitionType = "magic";
-    offset = 0;
-    mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
-    magicOrExtension = ''\x7fELF....AI\x02'';
-  };
+  #  wrapInterpreterInShell = false;
+  #  interpreter = "${pkgs.appimage-run}/bin/appimage-run";
+  #  recognitionType = "magic";
+  #  offset = 0;
+  #  mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
+  #  magicOrExtension = ''\x7fELF....AI\x02'';
+  #};
 
   # tty settings
   console.font = "Lat2-Terminus16";
@@ -65,8 +65,8 @@
       thunar-archive-plugin
       thunar-volman
     ];
-    fuse.userAllowOther = true; # user level programs
-    seahorse.enable = true; # password app
+    # fuse.userAllowOther = true; # user level programs
+    # seahorse.enable = true; # password app
     niri.enable = true;
   };
 
@@ -78,6 +78,11 @@
     pciutils
     alejandra # nix language format
     nixd # language server
+    # cli
+    sl
+    cowsay
+    neofetch
+    neovim
     # web utils
     wget
     git
@@ -95,6 +100,9 @@
     qt5.qtwayland
     qt6.qtwayland
     networkmanagerapplet
+    swww
+    waybar
+    fuzzel
     # clipboard
     wl-clipboard
     cliphist
@@ -103,8 +111,6 @@
     libsecret
     lxqt.lxqt-policykit
     wlogout
-    swayidle
-    swaylock-effects
     # media
     mpv
     imv
@@ -119,13 +125,19 @@
     pavucontrol
     brightnessctl
     # misc
-    networkmanagerapplet
-    appimage-run
-    sddm-astronaut
-    pinta
+    # appimage-run
+    # sddm-astronaut
     wineWowPackages.waylandFull
     winetricks
-    ];
+    # apps
+    vscode-fhs
+    firefox
+    # theming
+    papirus-icon-theme
+    # programing
+    libgccjit
+    rustc
+  ];
 
   # ================================================================ #
   # =                         INFASTRUCTURE                        = #
@@ -141,7 +153,7 @@
     cursor.package = pkgs.bibata-cursors;
     cursor.name = "Bibata-Modern-Classic";
     cursor.size = 24;
-    fonts = {
+    fonts = { 
       monospace = {
         package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
         name = "JetBrainsMono Nerd Font Mono";
@@ -193,11 +205,16 @@
       displayManager.lightdm.enable = false;
       }; 
     libinput.enable = true;
-    displayManager = {
-      sddm = {
-        wayland.enable = true;
-        theme = "sddm-astronaut-theme";
-      };
+  };
+
+  # display-manager
+  services.displayManager = {
+    enable = true;
+    defaultSession = "niri";
+    sddm = {
+      enable = true;
+      wayland.enable = true;
+      autoNumlock = true;
     }; 
   };
 
