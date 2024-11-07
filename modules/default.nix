@@ -47,7 +47,7 @@
       thunar-volman
     ];
     # fuse.userAllowOther = true; # user level programs
-    # seahorse.enable = true; # password app
+    seahorse.enable = true; # password app
     lazygit.enable = true;
     niri.enable = true;
   };
