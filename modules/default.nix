@@ -63,7 +63,6 @@
     sl
     cowsay
     neofetch
-    neovim
     # web utils
     wget
     git

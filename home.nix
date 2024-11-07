@@ -1,38 +1,43 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  nixvim,
+  ...
+}: {
   home = {
     # general statements
     username = "goat";
     homeDirectory = "/home/goat";
     stateVersion = "24.05"; # D O  N O T  C H A N G E
-    # symlinking
-    file.".config/niri/config.kdl".source = ./configs/niri.kdl;
-    file.".config/waybar/config.jsonc".source = ./configs/waybar/config.jsonc;
-    file.".config/waybar/style.css ".source = ./configs/waybar/style.css;
-    # packages
-    packages = with pkgs; [
-      firefox
-      vscode-fhs
-      papirus-icon-theme
-      wineWowPackages.waylandFull
-    ];
-
-    # user theming
-    gtk.iconTheme.name = "Papirus-Dark";
-
-    # user-level variables
-    sessionVariables = {
-      EDITOR = "neovim";
-      NIXOS_OZONE_WL = "1";
-      GDK_BACKEND = "wayland";
-      QT_QPA_PLATFORM = "wayland";
-      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1"; # disable window decoration for qt apps
-      SDL_VIDEODRIVER = "wayland";
-      MOZ_ENABLE_WAYLAND = "1";
-      XDG_SESSION_TYPE = "wayland";
-      CLUTTER_BACKEND = "wayland";
-      GTK_CSD = "true";
-    };
   };
+
+  # user-level variables
+  home.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    GDK_BACKEND = "wayland";
+    QT_QPA_PLATFORM = "wayland";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1"; # disable window decoration for qt apps
+    SDL_VIDEODRIVER = "wayland";
+    MOZ_ENABLE_WAYLAND = "1";
+    XDG_SESSION_TYPE = "wayland";
+    CLUTTER_BACKEND = "wayland";
+    GTK_CSD = "true";
+  };
+
+  home.file.".config/niri/config.kdl".source = ./configs/niri.kdl;
+  home.file.".config/waybar/config.jsonc".source = ./configs/waybar/config.jsonc;
+  home.file.".config/waybar/style.css ".source = ./configs/waybar/style.css;
+
+  # user theming
+  gtk.iconTheme.name = "Papirus-Dark";
+
+  # packages
+  home.packages = with pkgs; [
+    firefox
+    vscode-fhs
+    papirus-icon-theme
+    wineWowPackages.waylandFull
+  ];
 
   # smaller dotfiles
   programs = {
@@ -55,6 +60,20 @@
         tab_fade 1
         active_tab_font_style   bold
         inactive_tab_font_style bold
+      '';
+    };
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+      # Core Neovim settings via `extraConfig`
+      extraConfig = ''
+        set clipboard=unnamedplus
+        set number
+        set tabstop=2
+        set shiftwidth=2
+        set expandtab  " Use spaces instead of tabs
       '';
     };
     bash = {

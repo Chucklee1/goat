@@ -6,6 +6,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
+    nixvim.url = "github:nix-community/nixvim";
   };
 
   outputs = {
@@ -13,6 +14,7 @@
     nixpkgs,
     home-manager,
     stylix,
+    nixvim,
     ...
   } @ inputs: {
     # = DESKTOP = #
