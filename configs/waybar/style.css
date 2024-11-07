@@ -1,6 +1,6 @@
 /* General Font Style */
 * {
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: FontAwesome, sans-serif;
     font-size: 13px;
 }
 
@@ -16,16 +16,6 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-/* Specific terminal and app styles */
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
-}
-
 /* Button Styles */
 button {
     box-shadow: inset 0 -3px transparent;
@@ -39,29 +29,6 @@ button:hover {
 }
 
 /* Modules Styling */
-#workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
-    color: #ffffff;
-}
-
-#workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#workspaces button.focused {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
-}
-
-#workspaces button.urgent {
-    background-color: #eb4d4b;
-}
-
-#mode {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
-}
 
 #clock,
 #network,
@@ -70,7 +37,6 @@ button:hover {
 #scratchpad,
 #mpd {
     padding: 5 10px;
-    color: #ffffff;
     background-color: transparent; /* Make all modules transparent */
 }
 
@@ -103,90 +69,10 @@ button:hover {
 /* Hover effects for clock */
 #clock {
     background-color: transparent;
-}
-
-/* Additional module styling for alerts */
-#network.disconnected {
-    background-color: #f53c3c; /* Red when disconnected */
+    color: #ffffff;
 }
 
 #power-profiles-daemon {
     padding-right: 15px;
-}
-
-#power-profiles-daemon.performance {
-    background-color: #f53c3c;
-    color: #ffffff;
-}
-
-#power-profiles-daemon.balanced {
-    background-color: #2980b9;
-    color: #ffffff;
-}
-
-#power-profiles-daemon.power-saver {
-    background-color: #2ecc71;
-    color: #000000;
-}
-
-/* Miscellaneous */
-#language {
-    background: #00b093;
-    color: #740864;
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state {
-    background: #97e1ad;
-    color: #000000;
-    padding: 0 0px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state > label {
-    padding: 0 5px;
-}
-
-#keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad.empty {
-	background-color: transparent;
-}
-
-#privacy {
-    padding: 0;
-}
-
-#privacy-item {
-    padding: 0 5px;
-    color: white;
-}
-
-#privacy-item.screenshare {
-    background-color: #cf5700;
-}
-
-#privacy-item.audio-in {
-    background-color: #1ca000;
-}
-
-#privacy-item.audio-out {
-    background-color: #0069d4;
-}
-
-.custom-spotify {
-    padding: 0 5px;
-    margin: 0 4px;
-    background-color: transparent;
-    color: #ffffff;
 }
 
