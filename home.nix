@@ -1,16 +1,14 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
-  # symlinking
-  home.file."/.config/niri/config.kdl".source = ./configs/niri.kdl;
-
+{pkgs, ...}: {
   home = {
+    # general statements
     username = "goat";
     homeDirectory = "/home/goat";
-    stateVersion = "24.05";
-
+    stateVersion = "24.05"; # D O  N O T  C H A N G E
+    # symlinking
+    file."../../.config/niri/config.kdl".source = ../configs/niri.kdl;
+    file."../../.config/waybar/config.jsonc".source = ../configs/waybar/config.jsonc;
+    file." ../../.config/waybar/style.css ".source = ../configs/waybar/style.css;
+    # user-level variables
     sessionVariables = {
       EDITOR = "neovim";
       NIXOS_OZONE_WL = "1";
@@ -25,14 +23,13 @@
     };
   };
 
+  # smaller dotfiles
   programs = {
     git = {
-      enable = true;
       userEmail = "cooperkang4@gamil.com";
       userName = "Chucklee1";
     };
     kitty = {
-      enable = true;
       settings = {
         scrollback_lines = 2000;
         wheel_scroll_min_lines = 1;

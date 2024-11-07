@@ -6,7 +6,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
-    niri.url = "github:YaLTeR/niri";
   };
 
   outputs = {
@@ -14,25 +13,9 @@
     nixpkgs,
     home-manager,
     stylix,
-    niri,
     ...
   } @ inputs: {
-    # niri extended packahe
-    overlays = [niri.overlays.niri];
-    # laptop config
-    nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./hosts/laptop/configuration.nix
-        stylix.nixosModules.stylix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-        }
-      ];
-    };
-    # desktop config
+    # = DESKTOP = #
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -43,6 +26,22 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.configurationFile = ./home.nix;
+        }
+      ];
+    };
+    # = LAPTOP = #
+    nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./hosts/laptop/configuration.nix
+        ./modules/theming.nix
+        stylix.nixosModules.stylix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.configurationFile = ./home.nix;
         }
       ];
     };

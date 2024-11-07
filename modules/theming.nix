@@ -1,10 +1,4 @@
 {pkgs, ...}: {
-  # user-level theming
-  gtk = {
-    enable = true;
-    iconTheme.name = "Papirus-Dark";
-  };
-
   # system-level theming
   stylix = {
     enable = true;
