@@ -1,5 +1,4 @@
 {
-  inputs,
   lib,
   config,
   pkgs,
@@ -8,29 +7,17 @@
   imports = [
     ./GPU/nvidia.nix
     ./GPU/radeon.nix
+    ./theming.nix
+    ./user.nix
   ];
   # ================================================================ #
   # =                           SYSTEM                             = #
   # ================================================================ #
-  
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.plymouth.enable = true;
-
-  # using tmpfs
-  # boot.tmp.useTmpfs = false;
-  # boot.tmp.tmpfsSize = "30%";
-
-  # boot.binfmt.registrations.appimage = {
-    # appimage support
-  #  wrapInterpreterInShell = false;
-  #  interpreter = "${pkgs.appimage-run}/bin/appimage-run";
-  #  recognitionType = "magic";
-  #  offset = 0;
-  #  mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
-  #  magicOrExtension = ''\x7fELF....AI\x02'';
-  #};
 
   # tty settings
   console.font = "Lat2-Terminus16";
@@ -46,13 +33,6 @@
   networking.networkmanager.enable = true;
   time.timeZone = "America/Vancouver";
   i18n.defaultLocale = "en_CA.UTF-8";
-
-  # user
-  users.users.goat = {
-    isNormalUser = true;
-    description = "goat";
-    extraGroups = ["networkmanager" "wheel"];
-  };
 
   # ================================================================ #
   # =                            SOFTWARE                          = #
@@ -101,6 +81,7 @@
     qt5.qtwayland
     qt6.qtwayland
     networkmanagerapplet
+    kitty
     swww
     waybar
     fuzzel
@@ -126,57 +107,20 @@
     pavucontrol
     brightnessctl
     # misc
-    # appimage-run
-    # sddm-astronaut
     wineWowPackages.waylandFull
     winetricks
-    # apps
     vscode-fhs
     firefox
-    # theming
     papirus-icon-theme
-    # programing
     libgccjit
     rustc
+    # overlays
+    niri-unstable
   ];
 
   # ================================================================ #
   # =                         INFASTRUCTURE                        = #
   # ================================================================ #
-
-  # theming
-  stylix = {
-    enable = true;
-    homeManagerIntegration.autoImport = true;
-    image = ../configs/wallpapers/clouds-sunset.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-terminal-dark.yaml";
-    opacity.terminal = 0.8;
-    cursor.package = pkgs.bibata-cursors;
-    cursor.name = "Bibata-Modern-Classic";
-    cursor.size = 24;
-    fonts = { 
-      monospace = {
-        package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
-        name = "JetBrainsMono Nerd Font Mono";
-      };
-      sansSerif = {
-        package = pkgs.noto-fonts-cjk-sans;
-        name = "Noto Sans CJK";
-      };
-      serif = {
-        package = pkgs.noto-fonts-cjk-serif;
-        name = "Noto Serif CJK";
-      };
-      sizes = {
-        applications = 12;
-        terminal = 12;
-        desktop = 11;
-        popups = 12;
-      };
-    };
-  };
-
-  fonts.packages = [(pkgs.nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})];
 
   # hardware
   hardware = {
@@ -184,7 +128,7 @@
     graphics.enable = true;
     # bluetooth
     bluetooth.enable = true;
-    bluetooth.powerOnBoot = true; 
+    bluetooth.powerOnBoot = true;
     # disable pulse audio
     pulseaudio.enable = false;
   };
@@ -218,7 +162,7 @@
         wayland.enable = true;
         wayland.compositor = "kwin";
         autoNumlock = true;
-      };  
+      };
     };
   };
 
@@ -265,5 +209,5 @@
   # ================================================================ #
   # =                         DO NOT TOUCH                         = #
   # ================================================================ #
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.05"; # D O  N O T  C H A N G E
 }

@@ -9,7 +9,14 @@
     niri.url = "github:YaLTeR/niri";
   };
 
-  outputs = { self, nixpkgs, home-manager, stylix, niri, ... } @ inputs: {
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    stylix,
+    niri,
+    ...
+  } @ inputs: {
     # niri extended packahe
     overlays = [niri.overlays.niri];
     # laptop config
@@ -22,7 +29,6 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.goat = import ./home.nix;
         }
       ];
     };
@@ -31,12 +37,12 @@
       system = "x86_64-linux";
       modules = [
         ./hosts/desktop/configuration.nix
+        ./modules/theming.nix
         stylix.nixosModules.stylix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.goat = import ./home.nix;
         }
       ];
     };

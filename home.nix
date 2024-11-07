@@ -16,17 +16,14 @@
       NIXOS_OZONE_WL = "1";
       GDK_BACKEND = "wayland";
       QT_QPA_PLATFORM = "wayland";
-      # QT_WAYLAND_DISABLE_WINDOWDECORATION = "1"; # disable window decoration for qt apps
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1"; # disable window decoration for qt apps
       SDL_VIDEODRIVER = "wayland";
       MOZ_ENABLE_WAYLAND = "1";
       XDG_SESSION_TYPE = "wayland";
       CLUTTER_BACKEND = "wayland";
-      # GTK_CSD = "true";
+      GTK_CSD = "true";
     };
   };
-
-  # user theming
-  gtk.iconTheme.name = "Papirus-Dark";
 
   programs = {
     git = {
