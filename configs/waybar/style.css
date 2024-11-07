@@ -1,78 +1,171 @@
-/* General Font Style */
+/* Basic font and module reset */
 * {
-    font-family: FontAwesome, sans-serif;
-    font-size: 13px;
+  font-size: 16px;
+  font-family: "JetBrainsMono Nerd Font, JetBrainsMono NF";
+  min-width: 8px;
+  min-height: 0px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0px;
 }
 
 /* Waybar Styling */
 window#waybar {
-    background-color: rgba(30, 30, 30, 0.9);
-    color: #ffffff;
-    transition: background-color .5s;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  border-radius: 8px;
+  border: 2px solid #88c0d0; /* Primary color for borders */
+  background: rgba(28, 28, 34, 0.7); /* Dark semi-transparent background */
+  color: #e5e9f0; /* Light text color */
 }
 
-/* Hidden state */
-window#waybar.hidden {
-    opacity: 0.2;
+/* Menu and Tooltip Styling */
+menu, tooltip {
+  border-radius: 8px;
+  padding: 2px;
+  border: 1px solid #81a1c1; /* Light blue border */
+  background: rgba(28, 28, 34, 0.6); /* Semi-transparent dark background */
+  color: #e5e9f0;
 }
 
-/* Button Styles */
-button {
-    box-shadow: inset 0 -3px transparent;
-    border: none;
-    border-radius: 0;
+menu label, tooltip label {
+  font-size: 14px;
+  color: #d8dee9; /* Slightly darker text for labels */
 }
 
-button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
+/* Animation for attention indicators */
+#submap, #tray>.needs-attention {
+  animation-name: blink-active;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
-/* Modules Styling */
-
-#clock,
-#network,
-#pulseaudio,
-#tray,
-#scratchpad,
-#mpd {
-    padding: 5 10px;
-    background-color: transparent; /* Make all modules transparent */
+/* Module Groups Styling */
+.modules-right, .modules-left {
+  margin: 6px;
+  border-radius: 4px;
+  background: rgba(35, 35, 42, 0.4); /* Lighter semi-transparent background */
+  color: #e5e9f0;
 }
 
-/* Margin for window and workspaces */
-#window,
+/* Custom Module Boxes */
+#gcpu, #custom-github, #memory, #disk, #together, #submap, #custom-weather, #custom-recorder, #connection, #cnoti, #brightness, #power, #custom-updates, #tray, #audio, #privacy, #sound {
+  border-radius: 4px;
+  margin: 2px;
+  background: rgba(46, 52, 64, 0.3); /* Darker box background */
+}
+
+#custom-notifications {
+  padding-left: 4px;
+}
+
+#custom-hotspot, #custom-github, #custom-notifications {
+  font-size: 14px;
+}
+
+/* Specific Module Styling */
+#privacy-item, #gcpu, #custom-vpn, #custom-hotspot {
+  padding: 6px;
+  background: rgba(46, 52, 64, 0.3); /* Reusing dark background */
+}
+
+#custom-cpu-icon {
+  font-size: 25px;
+}
+
+#custom-cputemp, #disk, #memory, #cpu {
+  font-size: 14px;
+  font-weight: bold;
+}
+
 #workspaces {
-    margin: 0 4px;
+  margin: 2px;
+  padding: 4px;
+  border-radius: 8px;
 }
 
-/* Margin adjustments for first and last child */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
+#workspaces button {
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  color: rgba(236, 239, 244, 0.3); /* Light, semi-transparent text color */
+  background: transparent;
+  border-radius: 4px;
 }
 
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
+#workspaces button.urgent {
+  font-weight: bold;
+  color: #e5e9f0;
 }
 
-/* Hover effects for specific modules */
-#pulseaudio:hover,
-#network:hover,
-#cpu:hover,
-#memory:hover,
-#disk:hover,
-#temperature:hover,
-#tray:hover {
-    background-color: transparent; /* Transparent on hover */
+#workspaces button.active {
+  padding: 4px 2px;
+  background: rgba(88, 192, 208, 0.4); /* Light blue background */
+  color: #e5e9f0;
+  border-radius: 4px;
 }
 
-/* Hover effects for clock */
-#clock {
-    background-color: transparent;
-    color: #ffffff;
+#network.wifi, #submap, #bluetooth, #battery, #clock, #pulseaudio.mic {
+  padding: 4px;
+  border-radius: 8px;
 }
 
-#power-profiles-daemon {
-    padding-right: 15px;
+#pulseaudio.mic {
+  color: #2e3440; /* Dark text */
+  background: rgba(76, 86, 106, 0.6); /* Medium-dark background */
+  padding-left: 4px;
+}
+
+/* Slider Styling */
+#backlight-slider slider, #pulseaudio-slider slider {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+#backlight-slider trough, #pulseaudio-slider trough {
+  margin-top: 4px;
+  min-width: 6px;
+  min-height: 60px;
+  border-radius: 8px;
+  background-color: rgba(28, 28, 34, 0.6);
+}
+
+#backlight-slider highlight, #pulseaudio-slider highlight {
+  border-radius: 8px;
+  background-color: #88c0d0; /* Light blue highlight */
+}
+
+/* Battery Warning and Animation */
+#battery.discharging.warning {
+  animation-name: blink-yellow;
+}
+
+#battery.discharging.critical {
+  animation-name: blink-red;
+}
+
+/* Keyframes */
+@keyframes blink-active {
+  to {
+    background-color: #88c0d0; /* Light blue color for blinking */
+    color: #e5e9f0;
+  }
+}
+
+@keyframes blink-red {
+  to {
+    background-color: #c64d4f; /* Red color for critical battery */
+    color: #e5e9f0;
+  }
+}
+
+@keyframes blink-yellow {
+  to {
+    background-color: #cf9022; /* Yellow color for battery warning */
+    color: #e5e9f0;
+  }
 }
 

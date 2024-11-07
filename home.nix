@@ -25,8 +25,6 @@
   };
 
   home.file.".config/niri/config.kdl".source = ./configs/niri.kdl;
-  home.file.".config/waybar/config.jsonc".source = ./configs/waybar/config.jsonc;
-  home.file.".config/waybar/style.css ".source = ./configs/waybar/style.css;
 
   # user theming
   gtk.iconTheme.name = "Papirus-Dark";
@@ -42,6 +40,7 @@
   # smaller dotfiles
   programs = {
     fuzzel.enable = true;
+    wlogout.enable = true;
     git = {
       enable = true;
       userEmail = "cooperkang4@gamil.com";
@@ -81,6 +80,8 @@
       shellAliases = {
         sv = "sudo nvim";
         v = "nvim";
+        exec-waybar = "pkill waybar && waybar &";
+        exec-swww = "pkill swww && swww init && swww img ~/goat/configs/wallpapers/mono-forest.PNG";
         cg = "sudo nix-collect-garbage";
         update-desktop = "sudo nixos-rebuild switch --flake ~/goat#desktop --impure --show-trace";
         update-laptop = "sudo nixos-rebuild switch --flake ~/goat#laptop --impure --show-trace";

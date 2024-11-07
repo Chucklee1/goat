@@ -91,7 +91,6 @@
     # security
     libsecret
     lxqt.lxqt-policykit
-    wlogout
     # media
     mpv
     imv
