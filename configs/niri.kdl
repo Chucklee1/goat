@@ -7,6 +7,7 @@ spawn-at-startup "swww" "init"
 spawn-at-startup "nm-applet"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "dunst"
+spawn-at-startup "lxqt-policykit-agent"
 
 // input devices, yk
 input {
