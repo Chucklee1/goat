@@ -3,8 +3,9 @@
   config,
   ...
 }: {
-  imports = [./configs/waybar-windows.nix];
+  imports = [./configs/waybar.nix];
   home.file.".config/niri/config.kdl".source = ./configs/niri.kdl;
+
   home = {
     # general statements
     username = "goat";
