@@ -3,7 +3,7 @@
   config,
   ...
 }: {
-  imports = [./configs/waybar.nix];
+  imports = [./configs/waybar-windows.nix];
   home.file.".config/niri/config.kdl".source = ./configs/niri.kdl;
   home = {
     # general statements
