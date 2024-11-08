@@ -6,6 +6,7 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 spawn-at-startup "swww" "init"
 spawn-at-startup "nm-applet"
 spawn-at-startup "blueman-applet"
+spawn-at-startup "waybar"
 spawn-at-startup "dunst"
 spawn-at-startup "lxqt-policykit-agent"
 
@@ -28,7 +29,6 @@ input {
 
     mode "1920x1080@165.001"
     scale 1.0 // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-
     transform "normal"
     position x=1280 y=0
 }
@@ -37,13 +37,8 @@ input {
 layout {
     gaps 8
     center-focused-column "never"
-    
+
     default-column-width { proportion 0.5; }
-    preset-column-widths {
-        proportion 0.33333
-        proportion 0.5
-        proportion 0.66667
-    }
     
     focus-ring {
         width 2
@@ -69,16 +64,17 @@ binds {
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
     
-    // audio
+    // XF86 keys
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    XF86MonBrightnessDown { spawn "brightnessctl" "s" "5%-" }
+    XF86MonBrightnessUp { spawn "brightnessctl" "s" "5%+" }
    
     // quiting n killin
     Mod+Q { close-window; }
     Ctrl+Alt+Delete { quit; }
-    Mod+Shift+P { power-off-monitors; } // Powers off the monitors. like turning computer to sleep
 
     // move focus
     Mod+Left  { focus-column-left; }
@@ -120,5 +116,7 @@ binds {
     Mod+Equal { set-column-width "+10%"; }
     Mod+Shift+Minus { set-window-height "-5%"; }
     Mod+Shift+Equal { set-window-height "+5%"; }
+
+    // XF86Fn
 }
 

@@ -35,6 +35,18 @@
   time.timeZone = "America/Vancouver";
   i18n.defaultLocale = "en_CA.UTF-8";
 
+  environment.variables = {
+    NIXOS_OZONE_WL = "1";
+    GDK_BACKEND = "wayland";
+    QT_QPA_PLATFORM = "wayland";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1"; # disable window decoration for qt apps
+    SDL_VIDEODRIVER = "wayland";
+    MOZ_ENABLE_WAYLAND = "1";
+    XDG_SESSION_TYPE = "wayland";
+    CLUTTER_BACKEND = "wayland";
+    GTK_CSD = "true";
+  };
+
   # ================================================================ #
   # =                            SOFTWARE                          = #
   # ================================================================ #
@@ -133,7 +145,7 @@
 
   # services
   services = {
-    # keyboard
+    # printing
     printing.enable = true;
     # bluetooth applet
     blueman.enable = true;
@@ -150,10 +162,10 @@
     fstrim.enable = true;
     gnome.gnome-keyring.enable = true;
     openssh.enable = true;
-    libinput.enable = true;
     # display-manager
     displayManager = {
       enable = true;
+      ly.enable = true;
       defaultSession = "niri";
     };
   };

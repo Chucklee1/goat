@@ -1,6 +1,4 @@
 {
-  pkgs,
-  home-manager,
   ...
 }: {
   # system user configuration
