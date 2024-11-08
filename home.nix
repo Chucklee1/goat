@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [./configs/waybar.nix];
+  home.file.".config/niri/config.kdl".source = ./configs/niri.kdl;
   home = {
     # general statements
     username = "goat";
@@ -23,8 +24,6 @@
     CLUTTER_BACKEND = "wayland";
     GTK_CSD = "true";
   };
-
-  home.file.".config/niri/config.kdl".source = ./configs/niri.kdl;
 
   # user theming
   gtk.iconTheme.name = "Papirus-Dark";

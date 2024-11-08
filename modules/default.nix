@@ -84,7 +84,6 @@
     # Wayland & Display Utilities
     wayland-utils
     wayland-scanner
-    kdePackages.kwin
     egl-wayland
     qt5.qtwayland
     qt6.qtwayland
@@ -115,9 +114,6 @@
     playerctl
     pavucontrol
     brightnessctl
-
-
-
   ];
 
   # ================================================================ #
@@ -159,12 +155,6 @@
     displayManager = {
       enable = true;
       defaultSession = "niri";
-      sddm = {
-        enable = true;
-        wayland.enable = true;
-        wayland.compositor = "kwin";
-        autoNumlock = true;
-      };
     };
   };
 

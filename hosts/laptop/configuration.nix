@@ -11,5 +11,5 @@
   ];
 
   nvidia.enable = false;
-  radeon.enable = true;
+  radeon.enable = false;
 }
