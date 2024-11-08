@@ -53,58 +53,70 @@
 
   # env packages
   environment.systemPackages = with pkgs; [
-    # general utils
+    # Development Tools
     ripgrep
+    alejandra
+    nixd
+    libgccjit
+    rustc
+
+    # Command-Line Utilities
     killall
     pciutils
-    alejandra # nix language format
-    nixd # language server
-    # cli
     sl
     cowsay
     neofetch
-    # web utils
+
+    # Web & Networking Utilities
     wget
     git
     curl
-    # files
+
+    # Compression & Archiving
     unrar
     unzip
     file-roller
-    tree
     p7zip
-    # wayland
+    tree
+    isoimagewriter
+
+    # Wayland & Display Utilities
     wayland-utils
     wayland-scanner
-    kdePackages.kwin # compositor for sddm
+    kdePackages.kwin
     egl-wayland
     qt5.qtwayland
     qt6.qtwayland
     networkmanagerapplet
     swww
-    # clipboard
+
+    # Clipboard & Clipboard Management
     wl-clipboard
     cliphist
     xclip
-    # security
+
+    # Security & Authentication
     libsecret
     lxqt.lxqt-policykit
-    # media
+
+    # Media Tools
     mpv
     imv
     ffmpeg
     v4l-utils
-    # keyboard
+
+    # Keyboard & Input Tools
     wev
     ydotool
     wtype
-    # media control
+
+    # System Controls
     playerctl
     pavucontrol
     brightnessctl
-    # misc
-    libgccjit
-    rustc
+
+
+
   ];
 
   # ================================================================ #

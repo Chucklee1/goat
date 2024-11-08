@@ -4,7 +4,6 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 //startup
 spawn-at-startup "swww" "init"
-spawn-at-startup "waybar"
 spawn-at-startup "nm-applet"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "dunst"
@@ -62,7 +61,7 @@ binds {
     Super+Alt+L { spawn "swaylock"; }
     Mod+E { spawn "thunar"; }
     Mod+Shift+F { spawn "firefox"; };
-    //Ctrl+Alt+Shift+R { spawn "blueman-applet"; } // debug keybind
+    Ctrl+Alt+R { spawn "waybar"; } // debug keybind
     
     // screenshot utility
     Print { screenshot; }
