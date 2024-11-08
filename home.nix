@@ -26,6 +26,7 @@
   };
 
   home.file.".config/niri/config.kdl".source = ./configs/niri.kdl;
+  programs.niri.enable = true;
 
   # user theming
   gtk.iconTheme.name = "Papirus-Dark";

@@ -49,7 +49,6 @@
     # fuse.userAllowOther = true; # user level programs
     seahorse.enable = true; # password app
     lazygit.enable = true;
-    niri.enable = true;
   };
 
   # env packages
