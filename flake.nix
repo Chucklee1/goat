@@ -17,32 +17,32 @@
     ...
   } @ inputs: {
     # = DESKTOP = #
-    nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.goat = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./hosts/desktop/configuration.nix
+        ./hosts/goat/configuration.nix
         ./modules/theming.nix
         stylix.nixosModules.stylix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.goat = import ./home.nix;
+          home-manager.users.goat = import ./hosts/goat/home.nix;
         }
       ];
     };
-    # = LAPTOP = #
-    nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
+    # = MACBOOK = #
+    nixosConfigurations.caprine = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./hosts/laptop/configuration.nix
+        ./hosts/caprine/configuration.nix
         ./modules/theming.nix
         stylix.nixosModules.stylix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.goat = import ./home.nix;
+          home-manager.users.caprine = import ./hosts/caprine/home.nix;
         }
       ];
     };

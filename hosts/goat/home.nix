@@ -1,3 +1,4 @@
+# goat home file
 {
   pkgs,
   config,
