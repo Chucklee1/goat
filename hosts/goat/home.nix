@@ -6,7 +6,6 @@
 }: {
   imports = [ ../../modules/default-home.nix ];
   home = {
-    # general statements
     username = "goat";
     homeDirectory = "/home/goat";
     stateVersion = "24.05"; # D O  N O T  C H A N G E
