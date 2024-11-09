@@ -1,3 +1,4 @@
+# goat configuration file
 {
   lib,
   config,
