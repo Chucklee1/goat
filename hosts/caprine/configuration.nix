@@ -1,3 +1,4 @@
+# caprine configuration file
 {
   lib,
   config,
